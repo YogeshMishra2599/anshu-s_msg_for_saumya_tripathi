@@ -6,8 +6,10 @@ let shadowLetter = document.getElementById("shadowLetter");
 let hintText = document.getElementById("hintText");
 
 let isOpen = false;
+let clickCount = 0; // new counter
 
 function openLetter() {
+  clickCount++; // increment on every click
 
   /* ================= OPEN ================= */
   if (!isOpen) {
@@ -26,7 +28,12 @@ function openLetter() {
     }, 1500);
 
     setTimeout(() => {
-      hintText.textContent = "😄😄";
+      // Show either regular text or funny warning
+      if (clickCount > 2) {
+        hintText.textContent = "Are bs karo ab kitne baar khologi, letter ft jayega letter 😄😄";
+      } else {
+        hintText.textContent = "😄😄";
+      }
       hintText.classList.remove("hide");
     }, 2300);
   }
@@ -45,10 +52,15 @@ function openLetter() {
     setTimeout(() => {
       cover.classList.remove("open");
 
-      hintText.textContent = "Sommo, letter k upar click karo...";
+      // Show either default text or funny warning
+      if (clickCount > 3) {
+        hintText.textContent = "Are bs karo ab kitne baar khologi, letter ft jayega letter 😄😄";
+      } else {
+        hintText.textContent = "Sommo, letter k upar click karo...";
+      }
       hintText.classList.remove("hide");
 
       letterSheet.style.zIndex = "1";
-    }, 1600); // slightly longer than zoomOut
+    }, 1600);
   }
 }
