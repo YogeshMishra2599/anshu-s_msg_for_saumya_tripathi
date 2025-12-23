@@ -388,3 +388,21 @@ body {
         min-height: 3%;
     }
 }
+
+.zoomOut {
+    animation: zoom-sheet-down 1.5s ease forwards;
+}
+
+@keyframes zoom-sheet-down {
+    0% {
+        transform: translate(0%, -30%);
+        z-index: 10;
+    }
+    70% {
+        transform: translate(0%, -100%);
+    }
+    100% {
+        transform: translate(0%, -10%);
+        z-index: 2;
+    }
+}

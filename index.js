@@ -5,23 +5,50 @@ let letter = document.getElementById("letter");
 let shadowLetter = document.getElementById("shadowLetter");
 let hintText = document.getElementById("hintText");
 
+let isOpen = false;
+
 function openLetter() {
-  cover.classList.add("open");
 
-  // First: fade the text away
-  hintText.classList.add("hide");
+  /* ================= OPEN ================= */
+  if (!isOpen) {
+    isOpen = true;
 
-  setTimeout(() => {
-    letterSheet.style.zIndex = "2";
-    clickHere.style.display = "none";
-    letter.style.animationIterationCount = "1";
-    shadowLetter.style.animationIterationCount = "1";
-    letterSheet.classList.add("zoomIn");
-  }, 1500);
+    cover.classList.add("open");
+    hintText.classList.add("hide");
 
-  // AFTER the letter is fully out → show emojis
-  setTimeout(() => {
-    hintText.textContent = "😄😄";
-    hintText.classList.remove("hide");
-  }, 2300); // slightly after zoom starts (tweak if needed)
+    setTimeout(() => {
+      letterSheet.style.zIndex = "2";
+      clickHere.style.display = "none";
+      letter.style.animationIterationCount = "1";
+      shadowLetter.style.animationIterationCount = "1";
+      letterSheet.classList.remove("zoomOut");
+      letterSheet.classList.add("zoomIn");
+    }, 1500);
+
+    setTimeout(() => {
+      hintText.textContent = "😄😄";
+      hintText.classList.remove("hide");
+    }, 2300);
+  }
+
+  /* ================= CLOSE ================= */
+  else {
+    isOpen = false;
+
+    // Start reverse animation
+    letterSheet.classList.remove("zoomIn");
+    letterSheet.classList.add("zoomOut");
+
+    hintText.classList.add("hide");
+
+    // After letter fully goes inside → close flap
+    setTimeout(() => {
+      cover.classList.remove("open");
+
+      hintText.textContent = "Sommo, letter k upar click karo...";
+      hintText.classList.remove("hide");
+
+      letterSheet.style.zIndex = "1";
+    }, 1600); // slightly longer than zoomOut
+  }
 }
