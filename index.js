@@ -30,7 +30,7 @@ function openLetter() {
     setTimeout(() => {
       // Show either regular text or funny warning
       if (clickCount > 2) {
-        hintText.textContent = "Are bs karo ab kitne baar khologi, letter ft jayega letter 😄😄";
+        hintText.textContent = "Are bs karo ab kitne baar khologi, letter ft jayega 😄😄";
       } else {
         hintText.textContent = "😄😄";
       }
