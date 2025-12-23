@@ -54,7 +54,7 @@ function openLetter() {
 
       // Show either default text or funny warning
       if (clickCount > 3) {
-        hintText.textContent = "Are bs karo ab kitne baar khologi, letter ft jayega letter 😄😄";
+        hintText.textContent = "Are bs karo ab kitne baar khologi, letter ft jayega 😄😄";
       } else {
         hintText.textContent = "Sommo, letter k upar click karo...";
       }
