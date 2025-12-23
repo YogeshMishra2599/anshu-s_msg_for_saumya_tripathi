@@ -53,7 +53,7 @@ function openLetter() {
       cover.classList.remove("open");
 
       // Show either default text or funny warning
-      if (clickCount > 3) {
+      if (clickCount > 2) {
         hintText.textContent = "Are bs karo ab kitne baar khologi, letter ft jayega 😄😄";
       } else {
         hintText.textContent = "Sommo, letter k upar click karo...";
@@ -61,6 +61,9 @@ function openLetter() {
       hintText.classList.remove("hide");
 
       letterSheet.style.zIndex = "1";
+
+      letterSheet.classList.remove("zoomOut");
+      letterSheet.style.transform = "";
     }, 1600);
   }
 }
